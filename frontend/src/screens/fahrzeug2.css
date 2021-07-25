@@ -1,0 +1,19 @@
+.fahrzeug2-content-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title-content-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    margin-right: 50px;
+}
+
+.flex-item {
+    margin: 20px;
+    font-size: 15px;
+}

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5f4cd6ab-6a10-4359-a03d-23c84d5c747e" name="Default Changelist" comment="registrieren funktioniert">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_fertig_transp9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Registrieren.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Registrieren.js" afterDir="false" />
+    </list>
+    <list id="cbf664df-4df9-4459-a7b7-74b41c3c81f3" name="Commit" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1uRDymo6Vdsm4LxY2aFwg2unVq9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f4cd6ab-6a10-4359-a03d-23c84d5c747e" name="Default Changelist" comment="" />
+      <changelist id="cbf664df-4df9-4459-a7b7-74b41c3c81f3" name="Commit" comment="" />
+      <created>1624619767012</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624619767012</updated>
+      <workItem from="1624619770088" duration="549000" />
+      <workItem from="1625053245677" duration="100000" />
+      <workItem from="1625053353237" duration="487000" />
+      <workItem from="1625149786065" duration="1366000" />
+      <workItem from="1625591791275" duration="917000" />
+      <workItem from="1625658314515" duration="19227000" />
+      <workItem from="1625816844286" duration="1131000" />
+    </task>
+    <task id="LOCAL-00001" summary="nutzbare version">
+      <created>1624620253335</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1624620253336</updated>
+    </task>
+    <task id="LOCAL-00002" summary="registrieren funktioniert">
+      <created>1625817869034</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1625817869034</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="nutzbare version" />
+    <MESSAGE value="registrieren funktioniert" />
+    <option name="LAST_COMMIT_MESSAGE" value="registrieren funktioniert" />
+  </component>
+</project>

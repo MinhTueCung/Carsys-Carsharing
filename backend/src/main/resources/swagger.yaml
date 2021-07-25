@@ -1,0 +1,843 @@
+swagger: "2.0"
+info:
+  description: "API Definition für CarSys"
+  version: "1.0.0"
+  title: "Swagger CarSys"
+host: "carsys-carsharing.de"
+basePath: "/v1"
+schemes:
+  - "https"
+  - "http"
+
+
+paths:
+  /login:
+    get:
+      tags:
+        - "login"
+      summary: "get login status"
+      description: "Returns the login status"
+      operationId: "loginid"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/LoginStatus'
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: '#/definitions/LoginStatus'
+    post:
+      tags:
+        - "login"
+      summary: "set login status"
+      description: "Returns the login status"
+      operationId: "setloginid"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Bad Request"
+
+  /carstation:
+    get:
+      tags:
+        - "carstation"
+      summary: "Find all carstations"
+      description: "Returns a list of Carstations"
+      operationId: "getCarStations"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CarStation'
+        "404":
+          description: "CarStations not found"
+    post:
+      tags:
+        - "carstation"
+      summary: Creates a new carstation
+      consumes:
+        - application/json
+      operationId: addCarstation
+      parameters:
+        - in: body
+          name: carstationDTO
+          description: The carstation to create.
+          schema:
+            $ref: '#/definitions/CarStation'
+      responses:
+        "200":
+          description: "okay"
+          schema:
+            $ref: '#/definitions/CarStation'
+        "400":
+          description: "Invalid ID supplied"
+
+        "405":
+          description: "Validation exception"
+  /carstation/{carStationID}:
+    get:
+      tags:
+        - "carstation"
+      summary: "Get Cars by Station ID"
+      description: "Returns a S map of status codes to quantities"
+      operationId: "getStationsCars"
+      parameters:
+        - in: path
+          name: carStationID
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Car'
+    post:
+      tags:
+        - "cars"
+      summary: Creates a new Car and adds it to a Station
+      operationId: "addCarAssignToStation"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: carDTO
+          description: The car to add.
+          schema:
+            $ref: '#/definitions/Car'
+        - in: path
+          name: carstationId
+          type: string
+          format: uuid
+          required: true
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: "ok"
+          schema:
+            $ref: '#/definitions/Car'
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Pet not found"
+        "405":
+          description: "Validation exception"
+  /member:
+    get:
+      tags:
+        - "member"
+      summary: "Find all Members"
+      description: "TestMethod zur Demonstration"
+      operationId: "getAllMembers"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Member'
+
+
+    post:
+      tags:
+        - "Member"
+      summary: "Add Member"
+      description: "add a Member, not validated"
+      operationId: "addMember"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "memberDTO"
+          in: body
+          description: "ID of Member to return"
+          required: true
+          schema:
+            $ref: '#/definitions/Member'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Member'
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Member not found"
+
+    patch:
+      tags:
+        - "member"
+      summary: "patch Member"
+      description: "changes Members information/should reset validation"
+      operationId: "patchMember"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "memberDTO"
+          in: body
+          description: "ID of Member to return"
+          required: true
+          schema:
+            $ref: '#/definitions/Member'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Member'
+
+    put:
+      #hier muss vielleicht noch vernünftig überprüft werden
+      #welche parameter
+      tags:
+        - "member"
+      summary: "puts a validated Member"
+      description: "marks a Member as validated "
+      operationId: "validateMember"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "memberDTO"
+          in: body
+          description: "Member to validate"
+          required: true
+          schema:
+            $ref: '#/definitions/Member'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Member'
+
+
+  /member/{memberId}:
+    get:
+      tags:
+        - "member"
+      summary: "Find Member by ID"
+      description: "Returns a single Memberr"
+      operationId: "getMemberById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "memberId"
+          in: path
+          description: "ID of Member to return"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Member'
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Member not found"
+
+    delete:
+      tags:
+        - "member"
+      summary: "Deactivated a Member"
+      description: ""
+      operationId: "deactivateMember"
+      produces:
+        - "application/json"
+      parameters:
+        - in: path
+          name: "memberId"
+          description: "ID of member to deactivate"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Member not found"
+
+
+
+  /bills/{memberId}/:
+    get:
+      tags:
+        - "bills"
+      summary: "Find Members bills by ID"
+      description: "Returns a list fo bills"
+      operationId: "getMembersBillsById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "memberId"
+          in: path
+          description: "ID of Member which bills to return"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Booking'
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Member not found"
+    patch:
+      tags:
+        - "bills"
+      summary: "Patch bills"
+      description: ""
+      operationId: "patchMemberBills"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "memberId"
+          in: path
+          description: "ID of Member which bills to return"
+          required: true
+          type: "string"
+          format: "uuid"
+        - name: "bill"
+          in: body
+          description: "Changed Bill of Member"
+          required: true
+          schema:
+            $ref: '#/definitions/Bill'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Bill'
+
+  /cars:
+    get:
+      tags:
+        - "car"
+      summary: "Returns a list of Cars"
+      operationId: "getAllCars"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Car'
+        "404":
+          description: "No Cars in database"
+    post:
+      tags:
+        - "car"
+      summary: "Post a car"
+      operationId: "postOneCar"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "car"
+          in: body
+          required: true
+          description: "The body of the car to post."
+          schema:
+            $ref: '#/definitions/Car'
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Bad Request"
+
+  /cars/{carID}:
+      get:
+        tags:
+          - "car"
+        summary: "Return a car"
+        operationId: "getOneCar"
+        produces:
+          - "application/json"
+        parameters:
+          - name: "carID"
+            in: path
+            required: true
+            description: "The ID of the car to return."
+            type: "string"
+            format: "uuid"
+        responses:
+          "200":
+            description: "successful operation"
+            schema:
+              $ref: '#/definitions/Car'
+          "404":
+            description: "Car not found"
+
+  /bookings/else:
+    post:
+      tags:
+        - "booking"
+      summary: "Post a booking"
+      operationId: "postOneBooking"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "booking"
+          in: body
+          required: true
+          description: "The body of the booking to post."
+          schema:
+            $ref: '#/definitions/Booking'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: string
+        "404":
+          description: "Not found"
+          schema:
+            type: string
+        "403":
+          description: "Forbidden"
+          schema:
+            type: string
+    get:
+      tags:
+        - "booking"
+      summary: "Find Members bookings by Member ID"
+      description: "Returns a list of member´s bookings"
+      operationId: "getAllMemberBookings"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Booking'
+        "404":
+          description: "No Bookings in database"
+
+  /bookings:
+    get:
+      tags:
+        - "booking"
+      summary: "Returns a list of Bookings"
+      operationId: "getAllBookings"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Booking'
+        "404":
+          description: "No Bookings in database"
+
+  /bookings/{bookingID}:
+    get:
+      tags:
+        - "booking"
+      summary: "Find Members bookings by ID"
+      description: "Returns a list of bookings"
+      operationId: "getOneBookingById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "bookingID"
+          in: path
+          description: "bookingID"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Booking'
+        "404":
+          description: "No Booking in database"
+    delete:
+      tags:
+        - "booking"
+      summary: "Delete Members bookings by bookingID"
+      description: "Delete a Members Booking"
+      operationId: "deleteOneBookingById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "bookingID"
+          in: query
+          description: "ID of booking which needs to be deleted"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Booking'
+        "404":
+          description: "No Booking in database"
+    patch:
+      tags:
+        - "booking"
+      summary: "Change booking of Member"
+      description: "changes one booking, changes need to be checked"
+      operationId: "changeOneBookingById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "bookingID"
+          in: path
+          description: "bookingID"
+          required: true
+          type: "string"
+          format: "uuid"
+        - name: "booking"
+          in: body
+          description: "Changed Booking of Member"
+          required: true
+          schema:
+            $ref: '#/definitions/Booking'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Booking'
+        "404":
+          description: "No Booking in database"
+
+
+  /tariff:
+      get:
+        tags:
+          - "tariff"
+        summary: "Find all tariffs"
+        description: "TestMethod zur Demonstration"
+        operationId: "getAllTariffs"
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            description: "successful operation"
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Tariff'
+
+definitions:
+  LoginStatus:
+    type: "object"
+    properties:
+      loggedIn:
+        type: "string"
+
+  Bill:
+    type: "object"
+    properties:
+      dueTo:
+        type: "string"
+        format: "date"
+      paymentStatus:
+        type: "boolean"
+        default: false
+      booking:
+        $ref: '#/definitions/Booking'
+  Booking:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      carId:
+        type: "string"
+        format: "uuid"
+      startDate:
+        type: "string"
+        format: "datetime"
+      startTime:
+        type: "string"
+      endDate:
+        type: "string"
+      endTime:
+        type: "string"
+      memberId:
+        type: "string"
+        format: "uuid"
+      status:
+        $ref: '#/definitions/BookingStatus'
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      phone:
+        type: "string"
+      login:
+        $ref: '#/definitions/Login'
+  Employee:
+    allOf:
+      - $ref: '#/definitions/User'
+      - type: "object"
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      carstation:
+        $ref: '#/definitions/CarStation'
+
+  Member:
+    allOf:
+      - $ref: '#/definitions/User'
+      - type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      dateOfBirth:
+        type: "string"
+      iban:
+        type: "string"
+      drivingLicenseNumber:
+        type: "string"
+      tax:
+        $ref: '#/definitions/Tax'
+      login:
+        $ref: '#/definitions/Login'
+      address:
+        $ref: '#/definitions/Address'
+      rfid:
+        $ref: '#/definitions/RFID'
+      bills:
+        type: array
+        items:
+          $ref: '#/definitions/Bill'
+      tariff:
+        $ref: '#/definitions/Tariff'
+      active:
+        type: boolean
+      userStatus:
+        $ref: '#/definitions/Status'
+  RFID:
+    type: object
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      chipNumber:
+        type: string
+
+  CarStation:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      address:
+        $ref: '#/definitions/Address'
+  Car:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      type:
+        $ref: '#/definitions/Type'
+      mileage:
+        type: "number"
+        format: "int32"
+      carstationCityName:
+        type: "string"
+      seats:
+        type: "integer"
+        format: "int32"
+      licensePlate:
+        type: "string"
+      consumption:
+        type: "number"
+        format: "float"
+      maintenanceDate:
+        type: "string"
+      pricePerHour:
+        type: "number"
+        format: "int"
+      description:
+        type: "string"
+      active:
+        type: "boolean"
+      category:
+        $ref: '#/definitions/Category'
+      transmission:
+        $ref: '#/definitions/Transmission'
+      fuelAC:
+        $ref: '#/definitions/FuelAircondition'
+
+
+
+  Address:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      street:
+        type: "string"
+      city:
+        type: "string"
+      postcode:
+        type: "string"
+      houseno:
+        type: "string"
+
+  Login:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+      email:
+        type: "string"
+
+
+  Status:
+    type: "string"
+    description: "Member account status"
+    enum:
+      - "active"
+      - "disabled"
+  Tariff:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      bezeichner:
+        type: "string"
+      prozentsatz:
+        type: "string"
+  FuelAircondition:
+    type: "string"
+    enum:
+      - R
+      - N
+      - D
+      - Q
+      - H
+      - I
+      - E
+      - C
+      - L
+      - S
+      - A
+      - B
+      - M
+      - F
+      - V
+      - Z
+      - U
+      - X
+  Transmission:
+    type: "string"
+    enum:
+      - M
+      - N
+      - C
+      - A
+      - B
+      - D
+
+  BookingStatus:
+    type: "string"
+    enum:
+      - RESERVED
+      - RENTED
+      - COMPLETED
+      - CANCELED
+  Category:
+    type: string
+    enum:
+      - M
+      - N
+      - E
+      - H
+      - C
+      - D
+      - I
+      - J
+      - S
+      - R
+      - F
+      - G
+      - P
+      - U
+      - L
+      - W
+      - O
+      - X
+  Type:
+    type: string
+    enum:
+      - B
+      - C
+      - D
+      - W
+      - V
+      - L
+      - S
+      - T
+      - F
+      - J
+      - X
+      - P
+      - Q
+      - Z
+      - E
+      - M
+      - R
+      - H
+      - Y
+      - N
+      - G
+      - K
+
+  Tax:
+    type: string
+    enum:
+      - PRIVATE
+      - BUISNESS
+
+

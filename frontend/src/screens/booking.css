@@ -1,0 +1,26 @@
+.booking-content-flex-row {
+    display: flex;
+    flex-direction: row; /* row is default*/
+}
+
+.flex-row-item {
+    margin-left: 50px;
+}
+
+.booking-content-flex-column {
+    display: flex;
+    flex-direction: column; /* row is default*/
+    justify-content: space-between;
+}
+
+.flex-column-item {
+    margin-top: 80px;
+}
+
+.button {
+    margin-right: 20px;
+}
+
+.info-text {
+    margin-top: 50px;
+}
